@@ -5,7 +5,7 @@ const colors = require("colors");
 const dbConnect = () => {
     mongoose
         .connect(process.env.mongodb_connection, {
-            dbName: "blog-server",
+            dbName: "next-shop",
         })
 
         .then(() => {

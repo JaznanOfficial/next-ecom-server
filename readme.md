@@ -1,11 +1,11 @@
-# Knowleldge dot
+# Next Ecom
 
 ## API Reference
 
 ## Main root
 
 ```
-  https://blogs-server-ms.onrender.com
+  https://next-ecom-server.cyclic.app/
 ```
 
 ## users api
@@ -56,18 +56,18 @@
 
 <!-- categories api -->
 
-## blogs api
+## products api
 
 #### get,post,put and delete all users
 
 ```http
-/api/v1/blogs
+/api/v1/products
 ```
 
 -   for get,put,delete with any query use query after this api. like this:
 
 ```http
-/api/v1/blogs?email=abc@gmail.com
+/api/v1/products?email=abc@gmail.com
 ```
 
 #### which data you can provide
