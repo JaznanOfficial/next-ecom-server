@@ -8,22 +8,36 @@ const postProductsService = async (data) => {
 };
 
 const getProductsService = async (query) => {
-    // const resPerPage = 2;
-    // const productsCount = await Products.countDocuments();
-    // const apiFilters = new APIFilters(Products.find(), query).search().filter();
-    // let products = await apiFilters.query;
-    // const filteredProductsCount = products.length;
-    // apiFilters.pagination(resPerPage);
-    // products = await apiFilters.query.clone();
-    // const result = res.status(200).json({
-    //     productsCount,
-    //     resPerPage,
-    //     filteredProductsCount,
-    //     products,
-    // });
+    const search = query.search || "";
+    const category = query.category || "";
+    const page = Number(query.page) - 1 || 0;
+    const limit = Number(query.limit) || 2;
+    const price = Number(query.price) || "";
+    const rating = Number(query.rating) || "";
+    const id = query._id || "";
+    const email = query.email || "";
 
-    const result = await Products.find(query);
-    console.log(result);
+    let result;
+    if (id) {
+        // console.log(id);
+        return (result = await Products.findById(id));
+    }
+    console.log({ search, category, page, limit, price, rating, email });
+    // console.log(result);
+    result = await Products.find(
+        {
+            name: { $regex: search, $options: "i" },
+            // price: price,
+            // rating: { $gte: rating },
+        }
+        // { price }
+        // { rating: { $gte: rating } }
+        // { email }
+    )
+        // .where("category")
+        // .in(category)
+        .skip(page * limit)
+        .limit(limit);
     return result;
 };
 

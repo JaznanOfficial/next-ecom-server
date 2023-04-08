@@ -16,7 +16,8 @@ const postProductsController = async (req, res, next) => {
 const getProductsController = async (req, res, next) => {
     try {
         const query = req.query;
-        console.log(query);
+        // console.log(query);
+
         const products = await getProductsService(query);
         console.log(products);
         if (products.length === 0) {
