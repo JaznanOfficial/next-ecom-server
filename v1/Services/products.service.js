@@ -10,7 +10,7 @@ const getProductsService = async (query) => {
     const search = query.search;
     const category = query.category || "";
     const page = Number(query.page) - 1 || 0;
-    const limit = Number(query.limit) || 2;
+    const limit = Number(query.limit);
     const price = query.price;
     const ratings = Number(query.ratings) || 0;
     const id = query._id || "";
